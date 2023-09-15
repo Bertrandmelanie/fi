@@ -17,3 +17,5 @@ class Task(models.Model):
     
     class Reta:
         ordering = ['complete']
+
+

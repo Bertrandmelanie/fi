@@ -11,10 +11,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Task
 
+def task_list(request):
+    tasks = Task.objects.all()
+    return render(request, 'todo/task_list.html', {'tasks': tasks})
 
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'task'
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
